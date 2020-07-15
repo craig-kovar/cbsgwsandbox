@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">CbSgwSandbox</string>
+    <string name="edit_message">Enter Document ID</string>
+    <string name="button_view">View Document</string>
+    <string name="button_create">Create Document</string>
+    <string name="label_meta">Document Metadata</string>
+    <string name="column1">key</string>
+    <string name="column2">value</string>
+    <string name="newcolumn1">New Key</string>
+    <string name="newcolumn2">New Value</string>
+    <string name="add_row">Add Attribute</string>
+    <string name="save_doc">Save Document</string>
+    <string name="delete_doc">Delete Document</string>
+    <string name="purge_doc">Purge Document</string>
+    <string name="expire_document">Expire Document</string>
+    <string name="expiry_input">Enter Expiry Time</string>
+</resources>
