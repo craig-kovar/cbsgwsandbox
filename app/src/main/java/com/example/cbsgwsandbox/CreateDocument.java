@@ -34,7 +34,7 @@ public class CreateDocument extends AppCompatActivity {
     }
 
     public void addRow(View view) {
-        System.out.println("[CKTEST] Testing addRow");
+        //System.out.println("[CKTEST] Testing addRow");
 
         /* Find Tablelayout defined in main.xml */
         TableLayout tl = (TableLayout) findViewById(R.id.DocAttributes);
@@ -59,7 +59,7 @@ public class CreateDocument extends AppCompatActivity {
     }
 
     public void saveDocument(View view) {
-        System.out.println("[CKTEST] Testing save document");
+        //System.out.println("[CKTEST] Testing save document");
 
         Database db = dbmgr.getDatabase();
         TableLayout tl = (TableLayout) findViewById(R.id.DocAttributes);
@@ -92,5 +92,11 @@ public class CreateDocument extends AppCompatActivity {
             startActivity(intent);
         }
 
+    }
+
+    public void backMain(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra(MainActivity.DOC_KEY, docId);
+        startActivity(intent);
     }
 }

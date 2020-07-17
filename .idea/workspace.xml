@@ -9,7 +9,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74510869-f094-469a-a630-c29f6bfac263" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cbsgwsandbox/CreateDocument.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cbsgwsandbox/ReplicationActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cbsgwsandbox/util/RingBuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_replication.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cbsgwsandbox/CreateDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cbsgwsandbox/CreateDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cbsgwsandbox/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cbsgwsandbox/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cbsgwsandbox/ViewDocument.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cbsgwsandbox/ViewDocument.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/cbsgwsandbox/util/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/cbsgwsandbox/util/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_doc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_create_doc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_view_document.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_view_document.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +80,9 @@
   </component>
   <component name="RecentsManager">
     <key name="android.template.-1897400468">
+      <recent name="com.example.cbsgwsandbox" />
+    </key>
+    <key name="android.template.-1481850951">
       <recent name="com.example.cbsgwsandbox" />
     </key>
   </component>
@@ -145,39 +172,51 @@
       <screen x="0" y="23" width="1680" height="975" />
     </state>
     <state x="717" y="362" key="AndroidCreateXmlResourceDialog/0.23.1680.975@0.23.1680.975" timestamp="1594515964075" />
-    <state width="1358" height="248" key="GridCell.Tab.0.bottom" timestamp="1594661731390">
-      <screen x="0" y="23" width="1680" height="975" />
+    <state width="1358" height="248" key="GridCell.Tab.0.bottom" timestamp="1595027969527">
+      <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state width="1638" height="249" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1594519090194" />
-    <state width="1358" height="248" key="GridCell.Tab.0.bottom/0.23.1680.974@0.23.1680.974" timestamp="1594569945258" />
-    <state width="1358" height="248" key="GridCell.Tab.0.bottom/0.23.1680.975@0.23.1680.975" timestamp="1594661731390" />
-    <state width="1358" height="248" key="GridCell.Tab.0.center" timestamp="1594661731389">
-      <screen x="0" y="23" width="1680" height="975" />
+    <state width="1358" height="248" key="GridCell.Tab.0.bottom/0.23.1680.973@0.23.1680.973" timestamp="1595026759898" />
+    <state width="1358" height="248" key="GridCell.Tab.0.bottom/0.23.1680.974@0.0.1680.1050" timestamp="1594941090400" />
+    <state width="1358" height="248" key="GridCell.Tab.0.bottom/0.23.1680.974@0.23.1680.974" timestamp="1595027969527" />
+    <state width="1358" height="248" key="GridCell.Tab.0.bottom/0.23.1680.975@0.0.1680.1050" timestamp="1595015278430" />
+    <state width="1358" height="248" key="GridCell.Tab.0.bottom/0.23.1680.975@0.23.1680.975" timestamp="1595017344005" />
+    <state width="1358" height="248" key="GridCell.Tab.0.center" timestamp="1595027969527">
+      <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state width="1638" height="249" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1594519090194" />
-    <state width="1358" height="248" key="GridCell.Tab.0.center/0.23.1680.974@0.23.1680.974" timestamp="1594569945257" />
-    <state width="1358" height="248" key="GridCell.Tab.0.center/0.23.1680.975@0.23.1680.975" timestamp="1594661731389" />
-    <state width="1358" height="248" key="GridCell.Tab.0.left" timestamp="1594661731388">
-      <screen x="0" y="23" width="1680" height="975" />
+    <state width="1358" height="248" key="GridCell.Tab.0.center/0.23.1680.973@0.0.1680.1050" timestamp="1594941090384" />
+    <state width="1358" height="248" key="GridCell.Tab.0.center/0.23.1680.973@0.23.1680.973" timestamp="1595026759898" />
+    <state width="1358" height="248" key="GridCell.Tab.0.center/0.23.1680.974@0.0.1680.1050" timestamp="1595015278410" />
+    <state width="1358" height="248" key="GridCell.Tab.0.center/0.23.1680.974@0.23.1680.974" timestamp="1595027969527" />
+    <state width="1358" height="248" key="GridCell.Tab.0.center/0.23.1680.975@0.23.1680.975" timestamp="1595017344004" />
+    <state width="1358" height="248" key="GridCell.Tab.0.left" timestamp="1595027969526">
+      <screen x="0" y="23" width="1680" height="974" />
     </state>
-    <state width="1638" height="249" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1594519090193" />
-    <state width="1358" height="248" key="GridCell.Tab.0.left/0.23.1680.974@0.23.1680.974" timestamp="1594569945257" />
+    <state width="1358" height="248" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1595015278395" />
+    <state width="1358" height="248" key="GridCell.Tab.0.left/0.23.1680.973@0.23.1680.973" timestamp="1595026759897" />
+    <state width="1358" height="248" key="GridCell.Tab.0.left/0.23.1680.974@0.23.1680.974" timestamp="1595027969526" />
     <state width="1358" height="248" key="GridCell.Tab.0.left/0.23.1680.974@0.23.1680.975" timestamp="1594594539811" />
-    <state width="1358" height="248" key="GridCell.Tab.0.left/0.23.1680.975@0.23.1680.975" timestamp="1594661731388" />
-    <state width="1358" height="248" key="GridCell.Tab.0.right" timestamp="1594661731389">
-      <screen x="0" y="23" width="1680" height="975" />
+    <state width="1358" height="248" key="GridCell.Tab.0.left/0.23.1680.975@0.23.1680.975" timestamp="1595017344003" />
+    <state width="1358" height="248" key="GridCell.Tab.0.right" timestamp="1595027969527">
+      <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state width="1638" height="249" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1594519090194" />
-    <state width="1358" height="248" key="GridCell.Tab.0.right/0.23.1680.974@0.23.1680.974" timestamp="1594569945258" />
-    <state width="1358" height="248" key="GridCell.Tab.0.right/0.23.1680.975@0.23.1680.975" timestamp="1594661731389" />
+    <state width="1358" height="248" key="GridCell.Tab.0.right/0.23.1680.973@0.23.1680.973" timestamp="1595026759898" />
+    <state width="1358" height="248" key="GridCell.Tab.0.right/0.23.1680.974@0.0.1680.1050" timestamp="1594941090400" />
+    <state width="1358" height="248" key="GridCell.Tab.0.right/0.23.1680.974@0.23.1680.974" timestamp="1595027969527" />
+    <state width="1358" height="248" key="GridCell.Tab.0.right/0.23.1680.975@0.0.1680.1050" timestamp="1595015278430" />
+    <state width="1358" height="248" key="GridCell.Tab.0.right/0.23.1680.975@0.23.1680.975" timestamp="1595017344004" />
     <state x="653" y="293" key="chooseDestDirectoryDialog" timestamp="1594509413641">
       <screen x="0" y="23" width="1680" height="974" />
     </state>
     <state x="653" y="293" key="chooseDestDirectoryDialog/0.23.1680.974@0.23.1680.974" timestamp="1594509413641" />
-    <state x="258" y="141" width="1200" height="734" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1594591597919">
-      <screen x="0" y="23" width="1680" height="974" />
+    <state x="258" y="141" width="1200" height="734" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1595026393926">
+      <screen x="0" y="23" width="1680" height="973" />
     </state>
-    <state x="258" y="141" width="1200" height="734" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1680.974@0.23.1680.974" timestamp="1594591597919" />
+    <state x="258" y="141" width="1200" height="734" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1680.973@0.23.1680.973" timestamp="1595026393926" />
+    <state x="258" y="141" width="1200" height="734" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1680.974@0.23.1680.974" timestamp="1595013749144" />
+    <state x="258" y="141" width="1200" height="735" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1680.975@0.23.1680.975" timestamp="1595016971079" />
     <state x="537" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1594659935665">
       <screen x="0" y="23" width="1680" height="974" />
     </state>

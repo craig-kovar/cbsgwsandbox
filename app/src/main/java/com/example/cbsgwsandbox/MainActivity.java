@@ -20,12 +20,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("Entered into onCreate");
+        //System.out.println("Entered into onCreate");
         DatabaseManager dbMgr = DatabaseManager.getSharedInstance();
 
         Context context = getApplicationContext();
         dbMgr.initializeCouchbaseLite(context);
         dbMgr.openOrCreateDatabaseForUser(context,username);
+        //dbMgr.startPushAndPullReplicationForCurrentUser(username, password);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void viewDocument(View view) {
         // Do something in response to button view Document
-        System.out.println("[CKTEST] Testing view document button");
+        //System.out.println("[CKTEST] Testing view document button");
 
         Intent intent = new Intent(this, ViewDocument.class);
         editTextDocID = (EditText) findViewById(R.id.editTextDocID);
@@ -57,11 +58,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void createDocument(View view) {
         // Do something in response to button view Document
-        System.out.println("[CKTEST] Testing create document button");
+        //System.out.println("[CKTEST] Testing create document button");
         Intent intent = new Intent(this, CreateDocument.class);
         editTextDocID = (EditText) findViewById(R.id.editTextDocID);
         String docId = editTextDocID.getText().toString();
         intent.putExtra(DOC_KEY, docId);
+        startActivity(intent);
+    }
+
+    public void viewReplication(View view) {
+        //System.out.println("[CKTEST] Testing view replication");
+        Intent intent = new Intent(this, ReplicationActivity.class);
+        intent.putExtra("username", username);
+        intent.putExtra("password", password);
         startActivity(intent);
     }
 }

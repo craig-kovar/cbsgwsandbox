@@ -41,7 +41,7 @@ public class ViewDocument extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("[CKTEST] - ViewDocument:onCreate");
+        //System.out.println("[CKTEST] - ViewDocument:onCreate");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_document);
 
@@ -61,7 +61,7 @@ public class ViewDocument extends AppCompatActivity {
     }
 
     private String buildDocView(String docId) {
-        System.out.println("[CKTEST] ViewDocument:buildDocView");
+        //System.out.println("[CKTEST] ViewDocument:buildDocView");
 
         Database db = dbmgr.getDatabase();
 
@@ -85,7 +85,7 @@ public class ViewDocument extends AppCompatActivity {
     }
 
     private void checkMetaStatus(String docId) {
-        System.out.println("[CKTEST] ViewDocument:checkMetaStatus");
+        //System.out.println("[CKTEST] ViewDocument:checkMetaStatus");
         boolean retVal = false;
         Database db = dbmgr.getDatabase();
 
@@ -116,9 +116,9 @@ public class ViewDocument extends AppCompatActivity {
             for (Result result : rsItr) {
                 HashMap<String,Object> resultValues = (HashMap<String,Object>) result.toMap();
 
-                for (String key : resultValues.keySet()) {
-                    System.out.println(String.format("%s --> %s", key, resultValues.get(key)));
-                }
+//                for (String key : resultValues.keySet()) {
+//                    System.out.println(String.format("%s --> %s", key, resultValues.get(key)));
+//                }
 
                 if (result.contains("deleted")) {
                     deleteMessage = "Delete flag found: " + result.getInt("deleted");
@@ -141,7 +141,7 @@ public class ViewDocument extends AppCompatActivity {
     }
 
     public void deleteDocument(View view) {
-        System.out.println("[CKTEST] - ViewDocument:deleteDocument");
+        //System.out.println("[CKTEST] - ViewDocument:deleteDocument");
         Database db = dbmgr.getDatabase();
 
         try {
@@ -161,7 +161,7 @@ public class ViewDocument extends AppCompatActivity {
     }
 
     public void purgeDocument(View view) {
-        System.out.println("[CKTEST] - ViewDocument:purgeDocument");
+        //System.out.println("[CKTEST] - ViewDocument:purgeDocument");
         Database db = dbmgr.getDatabase();
 
         try {
@@ -200,6 +200,12 @@ public class ViewDocument extends AppCompatActivity {
         }
 
         checkMetaStatus(docId);
+    }
+
+    public void backMain(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra(MainActivity.DOC_KEY, docId);
+        startActivity(intent);
     }
 
 }

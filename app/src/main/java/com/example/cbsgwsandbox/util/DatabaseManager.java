@@ -16,6 +16,7 @@ import com.couchbase.lite.Document;
 import com.couchbase.lite.Expression;
 import com.couchbase.lite.IndexBuilder;
 import com.couchbase.lite.ListenerToken;
+import com.couchbase.lite.ReplicatedDocument;
 import com.couchbase.lite.Replicator;
 import com.couchbase.lite.ReplicatorChange;
 import com.couchbase.lite.ReplicatorChangeListener;
@@ -46,11 +47,14 @@ public class DatabaseManager {
     private ListenerToken listenerToken;
     public String currentUser = null;
 
+    public RingBuffer<String> replicationEvents;
+
     private static Replicator replicator;
     private static ListenerToken replicatorListenerToken;
+    private boolean replication = false;
 
     protected DatabaseManager() {
-
+        this.replicationEvents = new RingBuffer<>(1000);
     }
 
     public static DatabaseManager getSharedInstance() {
@@ -147,12 +151,12 @@ public class DatabaseManager {
     }
 
     // tag::startPushAndPullReplicationForCurrentUser[]
-    public static void startPushAndPullReplicationForCurrentUser(String username, String password)
+    public void startPushAndPullReplicationForCurrentUser(String username, String password)
     // end::startPushAndPullReplicationForCurrentUser[]
     {
         URI url = null;
         try {
-            url = new URI(String.format("%s/%s", syncGatewayEndpoint, sandbox));
+            url = new URI(String.format("%s/%s", syncGatewayEndpoint, "sandbox"));
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
@@ -162,42 +166,70 @@ public class DatabaseManager {
         config.setReplicatorType(ReplicatorConfiguration.ReplicatorType.PUSH_AND_PULL); // <2>
         config.setContinuous(true); // <3>
         config.setAuthenticator(new BasicAuthenticator(username, password)); // <4>
-        config.setChannels(Arrays.asList("channel." + username)); // <5>
+        config.setChannels(Arrays.asList(username)); // <5>
         // end::replicationconfig[]
+
 
         // tag::replicationinit[]
         replicator = new Replicator(config);
         // end::replicationinit[]
 
         // tag::replicationlistener[]
-        replicatorListenerToken = replicator.addChangeListener(new ReplicatorChangeListener() {
-            @Override
-            public void changed(ReplicatorChange change) {
+//        replicatorListenerToken = replicator.addChangeListener(new ReplicatorChangeListener() {
+//            @Override
+//            public void changed(ReplicatorChange change) {
+//
+//                if (change.getReplicator().getStatus().getActivityLevel().equals(Replicator.ActivityLevel.IDLE)) {
+//                    Log.e("Replication Comp Log", "Scheduler Completed");
+//                }
+//                if (change.getReplicator().getStatus().getActivityLevel().equals(Replicator.ActivityLevel.STOPPED)
+//                        || change.getReplicator().getStatus().getActivityLevel().equals(Replicator.ActivityLevel.OFFLINE)) {
+//                    Log.e("Rep Scheduler  Log", "ReplicationTag Stopped");
+//                }
+//            }
+//        });
+        // end::replicationlistener[]
 
-                if (change.getReplicator().getStatus().getActivityLevel().equals(Replicator.ActivityLevel.IDLE)) {
-                    Log.e("Replication Comp Log", "Scheduler Completed");
+        replicatorListenerToken = replicator.addDocumentReplicationListener(replication -> {
+
+            String repType = replication.isPush() ? "Push" : "Pull";
+            for (ReplicatedDocument document : replication.getDocuments()) {
+
+                CouchbaseLiteException err = document.getError();
+                if (err != null) {
+                    // There was an error
+                    return;
                 }
-                if (change.getReplicator().getStatus().getActivityLevel().equals(Replicator.ActivityLevel.STOPPED)
-                        || change.getReplicator().getStatus().getActivityLevel().equals(Replicator.ActivityLevel.OFFLINE)) {
-                    Log.e("Rep Scheduler  Log", "ReplicationTag Stopped");
-                }
+
+                String event = "%s - %s";
+                this.replicationEvents.offer(event.format(event, repType, document.getID()));
             }
         });
-        // end::replicationlistener[]
 
         // tag::replicationstart[]
         replicator.start();
+        this.replication = true;
         // end::replicationstart[]
     }
 
     // tag::stopAllReplicationForCurrentUser[]
-    public static void stopAllReplicationForCurrentUser()
+    public void stopAllReplicationForCurrentUser()
     // end::stopAllReplicationForCurrentUser[]
     {
         // tag::replicationstop[]
         replicator.removeChangeListener(replicatorListenerToken);
         replicator.stop();
+
+        this.replication = false;
         // end::replicationstop[]
+    }
+
+    public void resetCheckPoints() {
+        replicator.resetCheckpoint();
+    }
+
+    public boolean isReplication() {
+        return this.replication;
     }
 
     public void closeDatabaseForUser()

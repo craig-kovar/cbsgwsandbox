@@ -14,4 +14,9 @@
     <string name="purge_doc">Purge Document</string>
     <string name="expire_document">Expire Document</string>
     <string name="expiry_input">Enter Expiry Time</string>
+    <string name="toggle_repl">Toggle Replication</string>
+    <string name="repl_event_size">Set number of replication events: </string>
+    <string name="btn_view_repl">Manage Replication</string>
+    <string name="lbl_repl_event">Replication Events</string>
+    <string name="back">Back</string>
 </resources>

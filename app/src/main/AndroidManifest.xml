@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CreateDocument"></activity>
+        <activity android:name=".ReplicationActivity"></activity>
+        <activity android:name=".CreateDocument" />
         <activity android:name=".ViewDocument" />
         <activity android:name=".MainActivity">
             <intent-filter>
