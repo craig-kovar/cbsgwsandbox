@@ -166,7 +166,7 @@ public class DatabaseManager {
         config.setReplicatorType(ReplicatorConfiguration.ReplicatorType.PUSH_AND_PULL); // <2>
         config.setContinuous(true); // <3>
         config.setAuthenticator(new BasicAuthenticator(username, password)); // <4>
-        config.setChannels(Arrays.asList(username)); // <5>
+        // config.setChannels(Arrays.asList(username)); // <5>
         // end::replicationconfig[]
 
 
