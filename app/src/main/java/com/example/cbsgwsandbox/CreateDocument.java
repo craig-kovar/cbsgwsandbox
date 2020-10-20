@@ -14,8 +14,11 @@ import android.widget.Toast;
 
 import com.couchbase.lite.CouchbaseLiteException;
 import com.couchbase.lite.Database;
+import com.couchbase.lite.Document;
 import com.couchbase.lite.MutableDocument;
 import com.example.cbsgwsandbox.util.DatabaseManager;
+
+import java.util.HashMap;
 
 public class CreateDocument extends AppCompatActivity {
 
@@ -31,6 +34,41 @@ public class CreateDocument extends AppCompatActivity {
         dbmgr = DatabaseManager.getSharedInstance();
         Intent intent = getIntent();
         docId = intent.getStringExtra(MainActivity.DOC_KEY);
+
+        Database db = dbmgr.getDatabase();
+
+        Document doc = db.getDocument(docId);
+        if (doc != null) {
+            HashMap<String, Object> docValues = (HashMap<String, Object>) doc.toMap();
+            for (String mKey : docValues.keySet()) {
+                addRowWithValues(mKey, (String) docValues.get(mKey));
+            }
+        }
+        else {
+            addRowWithValues("New Key", "New Value");
+        }
+    }
+
+    public void addRowWithValues(String key, String value) {
+        TableLayout tl = (TableLayout) findViewById(R.id.DocAttributes);
+        /* Create a new row to be added. */
+        TableRow tr = new TableRow(this);
+        tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+        /* Create a Button to be the row-content. */
+
+        EditText newKey = new EditText(this);
+        newKey.setText(key);
+        newKey.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+
+        EditText newValue = new EditText(this);
+        newValue.setText(value);
+        newValue.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+
+        tr.addView(newKey);
+        tr.addView(newValue);
+        /* Add row to TableLayout. */
+//tr.setBackgroundResource(R.drawable.sf_gradient_03);
+        tl.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
     }
 
     public void addRow(View view) {

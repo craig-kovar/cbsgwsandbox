@@ -69,30 +69,6 @@
                     android:text="@string/column2" />
             </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <EditText
-                    android:id="@+id/txt_key_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="@string/newcolumn1" />
-
-                <EditText
-                    android:id="@+id/txt_value_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1"
-                    android:ems="10"
-                    android:importantForAutofill="no"
-                    android:inputType="textPersonName"
-                    android:text="@string/newcolumn2" />
-            </TableRow>
-
         </TableLayout>
     </ScrollView>
 

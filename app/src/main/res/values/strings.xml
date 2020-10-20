@@ -2,7 +2,7 @@
     <string name="app_name">CbSgwSandbox</string>
     <string name="edit_message">Enter Document ID</string>
     <string name="button_view">View Document</string>
-    <string name="button_create">Create Document</string>
+    <string name="button_create">Create/Edit Document</string>
     <string name="label_meta">Document Metadata</string>
     <string name="column1">key</string>
     <string name="column2">value</string>
